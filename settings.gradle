@@ -1,0 +1,3 @@
+include ':LaunchStarter'
+include ':app'
+rootProject.name = "MvvmCity"
