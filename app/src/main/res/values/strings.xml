@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MvvmCity</string>
+    <string name="app_name">GitHub</string>
     <string-array name="Home_Tabs">
         <item>Repos</item>
         <item>Favor</item>
@@ -74,4 +74,5 @@
             4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z
         </item>
     </string-array>
+
 </resources>

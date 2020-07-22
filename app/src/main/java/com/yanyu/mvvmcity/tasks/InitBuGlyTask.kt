@@ -1,6 +1,6 @@
 package com.yanyu.mvvmcity.tasks
 
-import com.yanyu.mvvmcitycity.config.Configs
+import com.yanyu.mvvmcity.config.Configs
 import com.fmt.launch.starter.task.MainTask
 import com.fmt.launch.starter.task.Task
 import com.tencent.bugly.crashreport.CrashReport

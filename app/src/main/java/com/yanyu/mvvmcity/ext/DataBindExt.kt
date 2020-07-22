@@ -19,7 +19,7 @@ import com.yanyu.mvvmcity.repos.model.ReposItemModel
 @BindingAdapter("url")
 fun loadImage(imageView: ImageView, url: String) {
     GlideApp.with(AppContext).load(url)
-        .placeholder(R.mipmap.ic_github)
+        .placeholder(R.mipmap.ic_launcher)
         .into(imageView)
 }
 
@@ -54,10 +54,10 @@ fun setReposLanguageBg(reposItemModel: ReposItemModel): Drawable? =
 @BindingConversion
 fun setReceivedEventImage(receivedEventModel: ReceivedEventModel): Drawable? =
     when (receivedEventModel.type) {
-        "WatchEvent" -> ContextCompat.getDrawable(AppContext, R.mipmap.icon_star_yellow)
+        "WatchEvent" -> ContextCompat.getDrawable(AppContext, R.mipmap.ic_launcher)
         "ForkEvent", "PushEvent", "CreateEvent" -> ContextCompat.getDrawable(
             AppContext,
-            R.mipmap.icon_fork_green
+            R.mipmap.ic_launcher
         )
         else -> null
     }

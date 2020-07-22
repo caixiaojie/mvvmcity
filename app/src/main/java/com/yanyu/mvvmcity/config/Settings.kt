@@ -1,7 +1,7 @@
 package com.yanyu.mvvmcity.config
 
-import com.yanyu.mvvmcitycity.constant.Constant
-import com.yanyu.mvvmcitycity.data.storage.Preference
+import com.yanyu.mvvmcity.data.storage.Preference
+import com.yanyu.mvvmcity.constant.Constant
 
 object Settings {
 
