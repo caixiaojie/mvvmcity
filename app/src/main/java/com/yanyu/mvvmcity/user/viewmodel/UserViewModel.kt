@@ -3,44 +3,36 @@ package com.yanyu.mvvmcity.user.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yanyu.mvvmcity.base.viewmodel.BaseViewModel
+import com.yanyu.mvvmcity.base.viewmodel.ErrorState
+import com.yanyu.mvvmcity.checkResult
 import com.yanyu.mvvmcity.config.Configs
+import com.yanyu.mvvmcity.ext.errorToast
+import com.yanyu.mvvmcity.ext.successToast
 import com.yanyu.mvvmcity.repos.model.ReposItemModel
-import com.yanyu.mvvmcity.user.model.db.User
 import com.yanyu.mvvmcity.user.model.*
+import com.yanyu.mvvmcity.user.model.db.UserInfo
 import com.yanyu.mvvmcity.user.repository.UserRepository
 
 class UserViewModel(private val mUserRepository: UserRepository) : BaseViewModel() {
 
     //提供给xml文件进行绑定
     val mUserInfoModel = MutableLiveData<UserInfoModel>()
+    val mUserInfoEntity = MutableLiveData<UserInfoEntity>()
 
-    fun createOrGetAuthorization(): LiveData<AuthorizationRespModel> = emit {
-        mUserRepository.createOrGetAuthorization(
-            AuthorizationReqModel(
-                Configs.CLIENT_SECRET,
-                Configs.SCOPE,
-                Configs.NOTE, Configs.NOTE_URL
-            ),
-            Configs.CLIENT_ID,
-            Configs.FINGERPRINT
-        )
-    }
 
-    fun getAccessToken(code: String, state: String): LiveData<OauthTokenModel> = emit {
-        val url =
-            "${Configs.GITHUB_BASE_URL}login/oauth/access_token?code=$code&state=$state&client_id=${Configs.CLIENT_ID}&client_secret=${Configs.CLIENT_SECRET}"
-        mUserRepository.getAccessToken(url)
-    }
-
-    fun getUser(): LiveData<UserModel> = emit {
-        mUserRepository.getUser()
-    }
-
-    fun saveLocalUser(user: User) {
+    fun loginFast(phone: String, password: String) {
         launch {
-            mUserRepository.saveLocalUser(user)
+            val result = mUserRepository.loginFast(phone, password)
+            result.checkResult(
+                onSuccess = {
+                    successToast("登录成功")
+                },onError = {
+                    mStateLiveData.value = ErrorState(it)
+                }
+            )
         }
     }
+
 
     fun searchUsers(
         query: String,

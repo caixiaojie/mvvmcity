@@ -1,12 +1,11 @@
 package com.yanyu.mvvmcity.user.api
 
+import com.yanyu.mvvmcity.base.model.CommonEntity
 import com.yanyu.mvvmcity.config.Configs
 import com.yanyu.mvvmcity.home.model.ReceivedEventModel
 import com.yanyu.mvvmcity.home.model.ReleaseModel
 import com.yanyu.mvvmcity.repos.model.ReposItemModel
 import com.yanyu.mvvmcity.user.model.*
-import okhttp3.ResponseBody
-import retrofit2.Response
 import retrofit2.http.*
 
 interface UserApi {
@@ -58,5 +57,12 @@ interface UserApi {
         @Query("page") page: Int,
         @Query("per_page") per_page: Int = Configs.PAGE_SIZE
     ): List<ReleaseModel>
+
+    @FormUrlEncoded
+    @POST(value = "app/login")
+    suspend fun loginFast(
+        @Field("phone") phone: String,
+        @Field("password") password: String
+    ): CommonEntity<UserInfoEntity>
 
 }

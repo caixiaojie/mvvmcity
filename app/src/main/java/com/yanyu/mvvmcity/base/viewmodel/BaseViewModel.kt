@@ -1,6 +1,7 @@
 package com.yanyu.mvvmcity.base.viewmodel
 
 import androidx.lifecycle.*
+import com.yanyu.mvvmcity.base.model.CommonEntity
 import kotlinx.coroutines.*
 
 //类型别名
@@ -31,6 +32,19 @@ open class BaseViewModel : ViewModel() {
     }
 
     fun <T> emit(cancel: Cancel? = null, block: EmitBlock<T>): LiveData<T> = liveData {
+        try {
+            mStateLiveData.value = LoadState
+            emit(block())
+            mStateLiveData.value = SuccessState
+        } catch (e: Exception) {
+            when (e) {
+                is CancellationException -> cancel?.invoke(e)
+                else -> mStateLiveData.value = ErrorState(e.message)
+            }
+        }
+    }
+
+    fun <T> emit1(cancel: Cancel? = null, block: EmitBlock<T>): LiveData<T> = liveData {
         try {
             mStateLiveData.value = LoadState
             emit(block())

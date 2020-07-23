@@ -9,7 +9,7 @@ class HomeViewModel(private val mUserRepository: UserRepository) : BaseViewModel
 
     fun deleteUser() {
         launch {
-            mUserRepository.deleteLocalUser(mUserRepository.getLocalUsers()[0])
+//            mUserRepository.deleteLocalUser(mUserRepository.getLocalUsers()[0])
         }
     }
 

@@ -12,7 +12,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val BASE_URL = "https://api.github.com/"
+//private const val BASE_URL = "https://api.github.com/"
+private const val BASE_URL = "http://cdtclt.yydemo.cn/"
 private const val TIME_OUT = 60L
 private const val TAG = "fmt"
 

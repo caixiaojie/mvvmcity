@@ -1,10 +1,10 @@
 package com.yanyu.mvvmcity.tasks
 
 import androidx.core.content.ContextCompat
-import com.yanyu.mvvmcitycity.R
+import com.yanyu.mvvmcity.R
 import com.fmt.launch.starter.task.Task
-import com.scwang.smartrefresh.header.MaterialHeader
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smart.refresh.header.MaterialHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 
 class InitSmartRefreshLayoutTask : Task() {
 

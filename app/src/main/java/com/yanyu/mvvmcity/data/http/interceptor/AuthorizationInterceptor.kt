@@ -31,7 +31,12 @@ class AuthorizationInterceptor : Interceptor {
                     }
                     isLogin() -> {//权限接口
                         val auth = "Token ${Settings.Account.token}"
-                        addHeader(Constant.AUTHORIZATION, auth)
+//                        addHeader(Constant.AUTHORIZATION, auth)
+                        addHeader(
+                            "authorization",
+                            "Bearer ${Settings.Account.token}"
+                        ) //添加公共请求头
+
                     }
                 }
 
